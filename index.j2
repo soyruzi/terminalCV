@@ -110,10 +110,13 @@ jQuery(document).ready(function($) {
             case ':(':
                 term.echo("Smile!");
                 break;
-                
+
+            case 'hell':
+                term.echo("Did you misspell 'help' or really want to go to hell?");
+                break;
 
             default: 
-                term.echo("unknow command " + command);
+                term.echo("unknown command " + command);
         }
     }, {
         prompt: '~ > ',

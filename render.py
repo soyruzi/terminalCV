@@ -6,7 +6,7 @@ from htmlmin import minify
 try:
     about = yaml.load(open('about.yml', 'r').read())
 except IOError:
-    print "You need to provide a valid about.yml file!"
+    print("You need to provide a valid about.yml file!")
     exit(1)
 
 if about['long_description'].endswith('\n'):

@@ -7,126 +7,309 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ about.description }}">
-    <meta name="author" content="{{ about.name }}">    
-    <meta property="og:title" content="{{ about.name }} - Portfolio" />
+    <meta name="author" content="{{ about.name }}">
+    <meta property="og:title" content="{{ about.name }}" />
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="{{ about.url }}" />
     <meta property="og:image" content="{{ about.image }}" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href=""/>
     <link rel="shortcut icon" href="{{ about.favicon }}"/>
-    <script src="js/jquery-1.7.1.min.js"></script>
-    <script src="js/jquery.mousewheel-min.js"></script>
-    <script src="js/jquery.terminal-min.js"></script>
-    <link href="css/jquery.terminal.css" rel="stylesheet"/>
-    <style> 
+    <!--
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/jquery.terminal@2.x.x/js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/jquery.terminal@2.x.x/css/jquery.terminal.min.css"/>
+    -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.terminal.min.css"/>
+    <style>
         body {
-            width: 800px;
+            width: 100%;
             font-size: 18px;
         }
     </style>
+
+{% if about.piwik_url and about.piwik_site_id -%}
+    <script type="text/javascript">
+        var _paq = _paq || [];
+{% if about.prepend_domain -%}
+        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+{% endif -%}
+{% if about.track_subdomains -%}
+        _paq.push(["setCookieDomain", "*.{{ about.domain }}"]);
+{% endif -%}
+{% if about.hide_click_known_alias -%}
+        _paq.push(["setDomains", ["*.{{ about.domain }}"]]);
+{% endif -%}
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function() {
+            var u="{{ about.piwik_url }}/";
+            _paq.push(["setTrackerUrl", u+'piwik.php']);
+            _paq.push(['setSiteId', '{{ about.piwik_site_id }}']);
+            var d=document, g=d.createElement("script"), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    {% if about.track_no_java -%}
+        <noscript><p><img src="//analytics.colacoweb.net/piwik.php?idsite=1&rec=1" style="border:0;" alt="" /></p></noscript>
+    {% endif -%}
+    {% endif -%}
   </head>
 <body>
 
 <script>
 jQuery(document).ready(function($) {
     $('body').terminal(function(command, term) {
-        commands = command.split(/[ ]+/);
+    /* Functions to be called by commands */
+      function whois () {
+          term.echo ("");
+          term.echo ("\t\tName:\t\t\t{{ about.name }}");
+          term.echo ("\t\tProfession:\t\t{{ about.profession }}");
+          term.echo ("\t\tLocation:\t\t{{ about.location }}");
+          {% if about.email -%}
+              term.echo ("\t\tEmail:\t\t{{ about.email }}");
+          {% endif -%}
+          term.echo ("\t\tHomepage:\t\t{{ about.ext_link }}");
+          term.echo ("");
+      }
 
+        function social () {
+            term.echo("");
+            {% if about.twitter_link %}
+                term.echo("\t\tTwitter:\t\t{{ about.twitter_link }}");
+            {% endif %}
+            {% if about.gplus_link %}
+                term.echo("\t\tGoogle+:\t\t\t{{ about.gplus_link }}");
+            {% endif %}
+            {% if about.linkedin_link %}
+                term.echo("\t\tLinkedIn:\t\t\t{{ about.linkedin_link }}");
+            {% endif %}
+            {% if about.github_link %}
+                term.echo("\t\tGitHub:\t\t\t{{ about.github_link }}");
+            {% endif %}
+            {% if about.twitch_link %}
+                term.echo("\t\tTwitch:\t\t\t{{ about.twitch_link }}");
+            {% endif %}
+            term.echo("")
+        }
+
+      function workexp () {
+          term.echo("");
+          {% for workexp in about.workexp %}
+              term.echo("\t\t{{ workexp.name }}");
+              term.echo("\t\t{{ workexp.company }}");
+              term.echo("\t\t{{ workexp.location}}");
+              term.echo("\t\t{{ workexp.date }}");
+              term.echo("\t\t{{ workexp.description }}");
+              term.echo("\t\t-------------------- ");
+              term.echo("");
+          {% endfor %}
+      }
+
+      function education () {
+          term.echo("");
+          {% for course in about.education %}
+              term.echo("\t\t{{ course.name }}");
+              term.echo("\t\t{{ course.date }}");
+              term.echo("\t\t{{ course.description }}");
+              term.echo("\t\t-------------------- ");
+              term.echo("");
+          {% endfor %}
+      }
+
+      function skills () {
+          term.echo(" ");
+          {% for skill in about.skills %}
+              var bar_length = Math.round({{ skill.percentage }} / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\t{{ skill.name }}: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + {{skill.percentage}} +"%");
+              term.echo("\t\t{{ skill.description }}\n");
+          {% endfor %}
+      }
+
+      function softskills () {
+          term.echo("");
+          {% for softskill in about.softskills %}
+              var bar_length = Math.round({{ softskill.percentage }} / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\t{{ softskill.name }}: \n" +
+                       "\t\t" + bar_filled + bar_blank +
+                        " " + {{softskill.percentage}} +"%\n");
+              {% if softskill.description %}
+                  term.echo("\t\t{{ softskill.description }}");
+                  term.echo("");
+              {% endif %}
+          {% endfor %}
+      }
+      
+      function languages () {
+          term.echo(" ");
+          {% for language in about.languages %}
+              var bar_length = Math.round({{ language.percentage }} / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\t{{ language.name }}: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + {{language.percentage}} +"%\n");
+              {% if language.description %}\
+                  term.echo("\t\t  {{ language.description }}");
+              {% endif %}
+          {% endfor %}
+      }
+
+      function projects () {
+          term.echo("");
+          {% for proj in about.projects %}
+              term.echo("\t\t{{ proj.title }}");
+              term.echo("\t\t{{ proj.date }}")
+              term.echo("\t\t{{ proj.link }}")
+              term.echo("\t\t{{ proj.description }}");
+              term.echo("\t\t-----------------------");
+              term.echo("");
+          {% endfor %}
+      }
+      
+      function tools () {
+          term.echo("\n\t\t\t\t\tHere's a list of some tools I am used to work with \n" +
+                    "\t\t\t\t\t\t Or at least I have some knowledge about \n" +
+                    "\t\t----------------------------------------------------------------------------");
+          {% for tool in about.tools %}
+              term.echo("\t\t|| {{ tool }}");
+          {% endfor %}
+          term.echo("\t\t----------------------------------------------------------------------------\n");
+      }
+
+      function thanks () {
+          term.echo("");
+          {% for thank in about.thanks %}
+              term.echo("\t\t{{ thank.thanku }} ");
+              term.echo("\t\t{{ thank.tks_link }}");
+              term.echo("\t\t-----------------------")
+          {% endfor %}
+          term.echo("")
+      }
+
+      function help () {
+          term.echo("\n[[b;white;]Available commands:]\n" +
+                    "\t\twhois, about, social, workexp, education, skills, softskills \n" +
+                    "\t\tlanguages, projects, startx, i-want-this, help, all, bye\n");
+      }
+
+      function hack () {
+          term.echo("\t\t\t\t\t\t\t        _______            \n"+
+                    "\t\t\t\t\t\t\t       |       |           \n"+
+                    "\t\t\t\t\t\t\t       |       |           \n"+
+                    "\t\t\t\t\t\t\t       |_______|_______    \n"+
+	            "\t\t\t\t\t\t\t               |       |   \n"+
+                    "\t\t\t\t\t\t\t               |       |   \n"+
+                    "\t\t\t\t\t\t\t ______________|_______|   \n"+
+                    "\t\t\t\t\t\t\t|      |       |       |   \n"+
+                    "\t\t\t\t\t\t\t|      |       |       |   \n"+
+                    "\t\t\t\t\t\t\t|______|_______|_______|   \n"+
+                    "\t\t\t\t\t\t[[;red;]   May the source be with you]\n");
+      }
+
+      function bomb () {
+          term.echo("");
+          term.echo("\t\t BOOOOOOOOMMMM!!!!!\n" +
+                    "\t\t YOHOHO pirate, beeing naughty huh?\n" +
+                    "\t\t Carefull with that, I'd rather drink 3 bottles of rum than\n" +
+                    "\t\t Drink that thing!! \n" +
+                    "\t\t Hack the planet! YAAARRRRRR\n");
+      }
+
+      function startx () {
+          term.echo("\n\t\tWhooooooooo take it easy I am still considering a GUI for this. \n" +
+                    "\t\tsh33l1sfun, spend a while exploring, maybe you can find something funny around here\n");
+      }
+      /* Functions End */
+
+        commands = command.split(/[ ]+/);
         switch(commands[0]) {
             case 'whois':
-                var whois = "Name: \t\t\t{{ about.name }}\n" +
-                "Email: \t\t   {{ about.email}}\n" +
-                "Location: \t\t{{ about.location }}\n" +
-                "Profession: \t  {{ about.profession  }}\n" +
-                "Homepage: \t\t{{ about.ext_link }}\n";
-                term.echo(whois);
+                whois();
                 break;
-            case 'about': 
-                var about = "{{ about.long_description  }}";
-                term.echo(about);
+            case 'about':
+                term.echo("\n{{ about.long_description }}\n")
                 break;
             case 'social':
-                {% if about.twitter_link %}
-                    term.echo("Twitter: {{ about.twitter_link }}");
-                {% endif %}
-
-                {% if about.gplus_link %}
-                    term.echo("G+: {{ about.gplus_link }}");
-                {% endif %}
-
-                {% if about.linkedin_link %}
-                    term.echo("LinkedIn: {{ about.linkedin_link }}");
-                {% endif %}
-
-                {% if about.github_link %}
-                    term.echo("GitHub: {{ about.github_link }}");
-                {% endif %}
+                social();
                 break;
-                
+            case 'workexp':
+                workexp();
+                break;
+            case 'education':
+                education();
+                break;
             case 'skills':
-                {% for skill in about.skills %}
-                    var stars_length = Math.round({{ skill.percentage }} / 20);
-                    var stars_filled = Array(stars_length + 1).join("&#9733;")
-                    var stars_blank= Array(6 - stars_length).join("&#9734;")
-                    term.echo("{{ skill.name }} --> " + stars_filled + stars_blank);
-                {% endfor %}
+                skills();
                 break;
-            
+            case 'softskills':
+                softskills();
+                break;
             case 'languages':
-                {% for lang in about.languages %}
-                    term.echo("{{ lang.name }} - {{ lang.level }}");
-                {% endfor %}
+                languages();
+                break;
+            case 'projects':
+                projects();
                 break;
             case 'tools':
-                {% for tool in about.tools %}
-                    term.echo("&#128295; {{ tool}}");
-                {% endfor %}
+                tools();
                 break;
-
-            case 'projects':
-                {% for proj in about.projects %}
-                    term.echo("{{ proj.title }}");
-                    term.echo("{{ proj.description }}");
-                    term.echo("-----------------------");
-                {% endfor %}
+            case 'thanks':
+                thanks();
                 break;
-
-
+            case 'i-want-this':
+                window.location = 'https://github.com/cfcolaco/terminalCV';
+            break;
             case 'help':
-                term.echo("Available commands are: whois, about, skills, help, social, languages, tools, projects, getyourown")
+                help();
                 break;
-            case 'getyourown':
-                window.location = "https://github.com/hauckd/terminalCV";
+            case 'all':
+                whois();
+                social();
+                workexp();
+                education();
+                skills();
+                softskills();
+                languages();
+                projects();
+                tools();
+                hack();
                 break;
-
-            case 'docker':
-                term.echo("You can't get twitter followers or github stars here ;)");
+            case 'startx':
+                startx();
                 break;
-
-            case 'vim':
-                term.echo("I love it too, but sadly it's not available here :(");
+            case 'hack':
+                hack();
                 break;
-
-            case ':(':
-                term.echo("Smile!");
+            case ':(){:|:&};:':
+                bomb();
                 break;
-
-            case 'hell':
-                term.echo("Did you misspell 'help' or really want to go to hell?");
-                break;
-
-            default: 
-                term.echo("unknown command " + command);
+            case 'bye':
+                window.location = 'invaders/index.html';
+                break
+            default:
+                term.echo("\n unknown command: " + command + "\n" +
+                          " please type 'help' for a list of available commands\n");
         }
     }, {
-        prompt: '~ > ',
-        greetings: "Welcome to the command line CV of {{ about.name }}" +
+      prompt: '{{ about.prompt }}:[[;lightblue;]~]$ ',
+      greetings: "[[b;white;]{{ about.greeting }}]" +
         "\n\n" +
-        "If you would like the more 'normal'"+ 
-        "\n" +
-        "version head over to http://{{ about.url }}" +
-        "\n\n" +
-        "Type 'help' to get a list of commands",
+        {% if about.pdf %}
+            "[[b;white;]If you would like a printable version (pdf)]"+
+            "\n" +
+            "[[b;white;]head over to https://{{ about.pdf }}>]" +
+            "\n\n" + 
+        {% endif %}
+        "[[b;white;]Type 'help' for  a list of available commands]" +
+        "\n",
         onBlur: function() {
             return false;
         }

@@ -1,75 +1,161 @@
-title: Daniel Hauck - System Engineer & Backend Developer
-name: Daniel Hauck
-email: daniel@hauck.io
-url: hauck-daniel.de
-location: Leinfelden-Echterdingen
+title: 4s3ti | Resume
+name: 4s3ti
+prompt: 4s3ti@irl
+greeting: Welcome to my online resume
+#email: 4s3ti@protonmail.com
+profession: Sysadmin / DevOps Engineer
+location: Sweden
+#pdf: cv.4s3ti.net/resume.pdf
 favicon: favicon.ico
-ext_link: https://blog.hauck.io
-description: Daniel Hauck, System Engineer & Backenddeveloper, Linux Administrator, Python Developer, based in Stuttgart, Database Adminstrator(DBA) 
+ext_link: https://4s3ti.net
+description: 4s3ti terminal resume
+twitter_link: https://twitter.com/4s3ti
+github_link: https://github.com/4s3ti
+twitch_link: https://twitch.tv/4s3ti
+
 long_description: >
-    I work as a system engineer and backend developer.   
-    I am specialized in building high performance  and 
-    highly availabe infrastructures and I am a lover of 
-    fast and simple systems. My current interests are 
-    automation, IoT, databases(SQL, NoSQL) and workflow 
-    simplification and optimization. If you are interested 
-    in my work, take a look at the 'Latest Projects' or 
-    take a look at my blog.
-profession: System Administrator & Backend Developer
-twitter_link: https://twitter.com/daniel_hauck
-gplus_link: https://plus.google.com/u/1/+DanielHauckLinux
-linkedin_link: https://de.linkedin.com/pub/daniel-hauck/74/283/943
-github_link: https://github.com/hauckd
+  \t\tIT? Linux? Gaming? yes that's me right there ... Speaking computer since i can remember myself as a person!\n
 
-projects: 
-        - title: didit
-          image: images/project_didit.png
-          link: didit.notimetoexplain.de
-          description: >
-            Didit is a small service which emails you in defined period and asks you what you have done,
-            or what you haven't done.
-            You just reply to the mail with the tasks you have done, or tasks you haven't done for a reason.
-            Now everbody has replied in a range of time, didit collects the information of the team members
-            and sends an email to everyone that they can see, what the other members have done.
+workexp:
 
-        - title: PySnipp
-          description: >
-              PySnipp is a command line application for collecting snippets and notes. For example you could store often used pieces of code there. For adding and editing your snippets the text editor vim is used.
+        - name: Sysadmin, DevOps Engineer
+          company: '-' 
+          location: Sweden
+          date: August 2019 - Present
+          description: Fun!!!! I make things that do other things.
 
+        - name: Lead Data Center Technician
+          company: '-'
+          location: Sweden
+          date: July 2017 - July 2019
+          description: Lead Tech at the biggest cloud provider in the world, build and maintained 3 Data Centers. 
+
+        - name: Freelancer / Contractor
+          company: '-'
+          location: Portugal
+          date: July 2008 - 2017
+          description: The guy known by the guy that knew a guy that could talk computer! 
+
+        - name: IT Systems Technician
+          company: '-'
+          location: Portugal
+          date: June 2010 - June 2016
+          description: The IT Guy, that was doing IT Things, workstations magic, networking sorcery! 
+
+        - name: Level 2 Call Centre Support Technician
+          company: '-'
+          location: Portugal
+          date: July 2008 - July 2009
+          description: Yes, that guy!! the guy that you yell at when your internet is not interneting!
+
+education:
+
+       - name: Air Force Military Training and IT Technician course
+         date: June 2009 - July 2010
+         #description:
+
+       - name: IT Technical Course
+         date: Sept 2004 - Jun 2008
+         #description:
 
 skills:
+
+        - name: Troubleshooting
+          percentage: 90
+          #Description:
+
         - name: Linux
-          description: profound linux command line knowledge in general
           percentage: 90
+          #description:  
 
-        - name: Automation
-          descripition: Continous Deployment and Integration, Server Installation and Environment Provision
+        - name: Windows
+          percentage: 80
+          description:
+
+        - name: Hardware
           percentage: 90
+          #description:
 
-        - name: Database Administrator      
-          descripition: RDMBS(PostgreSQL, MySQL) and NoSQL(MongoDB, Redis, ArangoDB) 
+        - name: Networking
+          percentage: 85
+          #description:
+
+        - name: Development & Scripting
+          percentage: 70
+          description: Terraform, Bash, expect, git, python
+
+        - name: webdevelopment / webdesign 
+          percentage: 40
+          description: HTML, CSS, Joomla, Wordpress
+
+        - name: Penetration Testing
+          percentage: 50
+          description: Breaking stuff is what i do most!  
+
+
+softskills:
+
+        - name: Self-Motivated
+          #description:
           percentage: 80
 
-        - name: Python 
-          descripition: Backend Development
-          percentage: 60 
+        - name: Team-Work
+          #description:
+          percentage: 90
+
+        - name: Communication
+          #description:
+          percentage: 90
+
+        - name: Resilience
+          #description:
+          percentage: 70
+
+        - name: Leadership
+          percentage: 60
+
+
 
 languages:
-        - name: German
-          level: Native Speaker   
-          stars: 5
+
+        - name: Portuguese
+          #description:
+          percentage: 100
 
         - name: English
-          level: Business Fluent
-          stars: 4
-        
-        
+          #description:
+          percentage: 95
+
+projects:
+
+        - title: 4s3ti
+          date: since 2019
+          link: https://twitch.tv/4s3ti
+          description: IT Talks, Internet Privacy awareness, Open Source Software, Good Practices and of course some gaming! 
+
+        - title: My Online Resume
+          date: since June 2016
+          link: https://cv.4s3ti.net
+          description: Forked from hauckd terminal resume, using jcubic jquery terminal, jinja2 and YAML
+
+        - title: PiVPN Maintainer
+          date: Since 2017
+          link: https://pivpn.io
+          description: PiVPN is the simplest way to setup a VPN designed to work with a raspberry pi. 
+
 tools:
-    - vim
-    - tmux
-    - git
-    - ansible 
-    - salt
-    - nginx
-    - python
-    - many more
+
+    - Windows  || Ubuntu  || Arch Linux  || Kali Linux   || ParrotOS         ||
+    - CentOS   || Debian  || Manjaro     || Raspbian     || Ubuntu Server    ||
+    - Mint     || GitLab  || Office365   || OpenOffice   || LibreOffice      ||
+    - AWS      || Json    || MSOffice    || Terraform    || Wireguard        ||
+    - MySQL    || Apache  || nginx       || postfix      || Dovecot          ||
+    - VSFTPD   || DNS     || PXE Boot    || Filezilla    || Novell Client    ||
+    - NMAP     || SQLMAP  || nikto       || Hydra        || Novell iPrint    ||
+    - john     || ncrack  || Netdiscover || aircrack-ng  || Novell Zenworks  ||
+    - Nessus   || Maltego || Wireshark   || OpenVast     || Zenworks Imaging ||
+    - CPanel   || Webmin  || IPTables    || VMWare       || VirtualBox       ||
+    - OpenVPN  || YAML    || Photoshop   || Wordpress    || Teamviewer       ||
+    - Joomla   || Jinja2  || Gparted     || DreamWeaver  || Clonezilla       ||
+    - Acronis  || Gparted || NoMachine   || ATOM         || Git              ||
+    - VIM      || Cisco   || Juniper     || Docker       || traefik          ||

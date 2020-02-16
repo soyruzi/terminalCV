@@ -2,163 +2,441 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Daniel Hauck</title>
+    <title>4s3ti | Resume</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Daniel Hauck, System Engineer & Backenddeveloper, Linux Administrator, Python Developer, based in Stuttgart, Database Adminstrator(DBA)">
-    <meta name="author" content="Daniel Hauck">    
-    <meta property="og:title" content="Daniel Hauck - Portfolio" />
+    <meta name="description" content="4s3ti terminal resume">
+    <meta name="author" content="4s3ti">
+    <meta property="og:title" content="4s3ti" />
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="hauck-daniel.de" />
+    <meta property="og:url" content="" />
     <meta property="og:image" content="" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href=""/>
     <link rel="shortcut icon" href="favicon.ico"/>
-    <script src="js/jquery-1.7.1.min.js"></script>
-    <script src="js/jquery.mousewheel-min.js"></script>
-    <script src="js/jquery.terminal-min.js"></script>
-    <link href="css/jquery.terminal.css" rel="stylesheet"/>
-    <style> 
+    <!--
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/jquery.terminal@2.x.x/js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/jquery.terminal@2.x.x/css/jquery.terminal.min.css"/>
+    -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.terminal.min.css"/>
+    <style>
         body {
-            width: 800px;
+            width: 100%;
             font-size: 18px;
         }
     </style>
-  </head>
+
+</head>
 <body>
 
 <script>
 jQuery(document).ready(function($) {
     $('body').terminal(function(command, term) {
-        commands = command.split(/[ ]+/);
+    /* Functions to be called by commands */
+      function whois () {
+          term.echo ("");
+          term.echo ("\t\tName:\t\t\t4s3ti");
+          term.echo ("\t\tProfession:\t\tSysadmin / DevOps Engineer");
+          term.echo ("\t\tLocation:\t\tSweden");
+          term.echo ("\t\tHomepage:\t\thttps://4s3ti.net");
+          term.echo ("");
+      }
 
+        function social () {
+            term.echo("");
+            
+                term.echo("\t\tTwitter:\t\thttps://twitter.com/4s3ti");
+            
+            
+            
+            
+                term.echo("\t\tGitHub:\t\t\thttps://github.com/4s3ti");
+            
+            
+                term.echo("\t\tTwitch:\t\t\thttps://twitch.tv/4s3ti");
+            
+            term.echo("")
+        }
+
+      function workexp () {
+          term.echo("");
+          
+              term.echo("\t\tSysadmin, DevOps Engineer");
+              term.echo("\t\t-");
+              term.echo("\t\tSweden");
+              term.echo("\t\tAugust 2019 - Present");
+              term.echo("\t\tFun!!!! I make things that do other things.");
+              term.echo("\t\t-------------------- ");
+              term.echo("");
+          
+              term.echo("\t\tLead Data Center Technician");
+              term.echo("\t\t-");
+              term.echo("\t\tSweden");
+              term.echo("\t\tJuly 2017 - July 2019");
+              term.echo("\t\tLead Tech at the biggest cloud provider in the world, build and maintained 3 Data Centers.");
+              term.echo("\t\t-------------------- ");
+              term.echo("");
+          
+              term.echo("\t\tFreelancer / Contractor");
+              term.echo("\t\t-");
+              term.echo("\t\tPortugal");
+              term.echo("\t\tJuly 2008 - 2017");
+              term.echo("\t\tThe guy known by the guy that knew a guy that could talk computer!");
+              term.echo("\t\t-------------------- ");
+              term.echo("");
+          
+              term.echo("\t\tIT Systems Technician");
+              term.echo("\t\t-");
+              term.echo("\t\tPortugal");
+              term.echo("\t\tJune 2010 - June 2016");
+              term.echo("\t\tThe IT Guy, that was doing IT Things, workstations magic, networking sorcery!");
+              term.echo("\t\t-------------------- ");
+              term.echo("");
+          
+              term.echo("\t\tLevel 2 Call Centre Support Technician");
+              term.echo("\t\t-");
+              term.echo("\t\tPortugal");
+              term.echo("\t\tJuly 2008 - July 2009");
+              term.echo("\t\tYes, that guy!! the guy that you yell at when your internet is not interneting!");
+              term.echo("\t\t-------------------- ");
+              term.echo("");
+          
+      }
+
+      function education () {
+          term.echo("");
+          
+              term.echo("\t\tAir Force Military Training and IT Technician course");
+              term.echo("\t\tJune 2009 - July 2010");
+              term.echo("\t\t");
+              term.echo("\t\t-------------------- ");
+              term.echo("");
+          
+              term.echo("\t\tIT Technical Course");
+              term.echo("\t\tSept 2004 - Jun 2008");
+              term.echo("\t\t");
+              term.echo("\t\t-------------------- ");
+              term.echo("");
+          
+      }
+
+      function skills () {
+          term.echo(" ");
+          
+              var bar_length = Math.round(90 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tTroubleshooting: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 90 +"%");
+              term.echo("\t\t\n");
+          
+              var bar_length = Math.round(90 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tLinux: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 90 +"%");
+              term.echo("\t\t\n");
+          
+              var bar_length = Math.round(80 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tWindows: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 80 +"%");
+              term.echo("\t\tNone\n");
+          
+              var bar_length = Math.round(90 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tHardware: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 90 +"%");
+              term.echo("\t\t\n");
+          
+              var bar_length = Math.round(85 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tNetworking: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 85 +"%");
+              term.echo("\t\t\n");
+          
+              var bar_length = Math.round(70 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tDevelopment & Scripting: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 70 +"%");
+              term.echo("\t\tTerraform, Bash, expect, git, python\n");
+          
+              var bar_length = Math.round(40 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\twebdevelopment / webdesign: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 40 +"%");
+              term.echo("\t\tHTML, CSS, Joomla, Wordpress\n");
+          
+              var bar_length = Math.round(50 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tPenetration Testing: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 50 +"%");
+              term.echo("\t\tBreaking stuff is what i do most!\n");
+          
+      }
+
+      function softskills () {
+          term.echo("");
+          
+              var bar_length = Math.round(80 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tSelf-Motivated: \n" +
+                       "\t\t" + bar_filled + bar_blank +
+                        " " + 80 +"%\n");
+              
+          
+              var bar_length = Math.round(90 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tTeam-Work: \n" +
+                       "\t\t" + bar_filled + bar_blank +
+                        " " + 90 +"%\n");
+              
+          
+              var bar_length = Math.round(90 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tCommunication: \n" +
+                       "\t\t" + bar_filled + bar_blank +
+                        " " + 90 +"%\n");
+              
+          
+              var bar_length = Math.round(70 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tResilience: \n" +
+                       "\t\t" + bar_filled + bar_blank +
+                        " " + 70 +"%\n");
+              
+          
+              var bar_length = Math.round(60 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tLeadership: \n" +
+                       "\t\t" + bar_filled + bar_blank +
+                        " " + 60 +"%\n");
+              
+          
+      }
+      
+      function languages () {
+          term.echo(" ");
+          
+              var bar_length = Math.round(100 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tPortuguese: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 100 +"%\n");
+              
+          
+              var bar_length = Math.round(95 / 10);
+              var bar_filled = Array(bar_length + 1).join("&#9611;");
+              var bar_blank= Array(11 - bar_length).join("&#9617;");
+              term.echo("\t\tEnglish: \n" +
+                        "\t\t" + bar_filled + bar_blank + 
+                        " " + 95 +"%\n");
+              
+          
+      }
+
+      function projects () {
+          term.echo("");
+          
+              term.echo("\t\t4s3ti");
+              term.echo("\t\tsince 2019")
+              term.echo("\t\thttps://twitch.tv/4s3ti")
+              term.echo("\t\tIT Talks, Internet Privacy awareness, Open Source Software, Good Practices and of course some gaming!");
+              term.echo("\t\t-----------------------");
+              term.echo("");
+          
+              term.echo("\t\tMy Online Resume");
+              term.echo("\t\tsince June 2016")
+              term.echo("\t\thttps://cv.4s3ti.net")
+              term.echo("\t\tForked from hauckd terminal resume, using jcubic jquery terminal, jinja2 and YAML");
+              term.echo("\t\t-----------------------");
+              term.echo("");
+          
+              term.echo("\t\tPiVPN Maintainer");
+              term.echo("\t\tSince 2017")
+              term.echo("\t\thttps://pivpn.io")
+              term.echo("\t\tPiVPN is the simplest way to setup a VPN designed to work with a raspberry pi.");
+              term.echo("\t\t-----------------------");
+              term.echo("");
+          
+      }
+      
+      function tools () {
+          term.echo("\n\t\t\t\t\tHere's a list of some tools I am used to work with \n" +
+                    "\t\t\t\t\t\t Or at least I have some knowledge about \n" +
+                    "\t\t----------------------------------------------------------------------------");
+          
+              term.echo("\t\t|| Windows  || Ubuntu  || Arch Linux  || Kali Linux   || ParrotOS         ||");
+          
+              term.echo("\t\t|| CentOS   || Debian  || Manjaro     || Raspbian     || Ubuntu Server    ||");
+          
+              term.echo("\t\t|| Mint     || GitLab  || Office365   || OpenOffice   || LibreOffice      ||");
+          
+              term.echo("\t\t|| AWS      || Json    || MSOffice    || Terraform    || Wireguard        ||");
+          
+              term.echo("\t\t|| MySQL    || Apache  || nginx       || postfix      || Dovecot          ||");
+          
+              term.echo("\t\t|| VSFTPD   || DNS     || PXE Boot    || Filezilla    || Novell Client    ||");
+          
+              term.echo("\t\t|| NMAP     || SQLMAP  || nikto       || Hydra        || Novell iPrint    ||");
+          
+              term.echo("\t\t|| john     || ncrack  || Netdiscover || aircrack-ng  || Novell Zenworks  ||");
+          
+              term.echo("\t\t|| Nessus   || Maltego || Wireshark   || OpenVast     || Zenworks Imaging ||");
+          
+              term.echo("\t\t|| CPanel   || Webmin  || IPTables    || VMWare       || VirtualBox       ||");
+          
+              term.echo("\t\t|| OpenVPN  || YAML    || Photoshop   || Wordpress    || Teamviewer       ||");
+          
+              term.echo("\t\t|| Joomla   || Jinja2  || Gparted     || DreamWeaver  || Clonezilla       ||");
+          
+              term.echo("\t\t|| Acronis  || Gparted || NoMachine   || ATOM         || Git              ||");
+          
+              term.echo("\t\t|| VIM      || Cisco   || Juniper     || Docker       || traefik          ||");
+          
+          term.echo("\t\t----------------------------------------------------------------------------\n");
+      }
+
+      function thanks () {
+          term.echo("");
+          
+          term.echo("")
+      }
+
+      function help () {
+          term.echo("\n[[b;white;]Available commands:]\n" +
+                    "\t\twhois, about, social, workexp, education, skills, softskills \n" +
+                    "\t\tlanguages, projects, startx, i-want-this, help, all, bye\n");
+      }
+
+      function hack () {
+          term.echo("\t\t\t\t\t\t\t        _______            \n"+
+                    "\t\t\t\t\t\t\t       |       |           \n"+
+                    "\t\t\t\t\t\t\t       |       |           \n"+
+                    "\t\t\t\t\t\t\t       |_______|_______    \n"+
+	            "\t\t\t\t\t\t\t               |       |   \n"+
+                    "\t\t\t\t\t\t\t               |       |   \n"+
+                    "\t\t\t\t\t\t\t ______________|_______|   \n"+
+                    "\t\t\t\t\t\t\t|      |       |       |   \n"+
+                    "\t\t\t\t\t\t\t|      |       |       |   \n"+
+                    "\t\t\t\t\t\t\t|______|_______|_______|   \n"+
+                    "\t\t\t\t\t\t[[;red;]   May the source be with you]\n");
+      }
+
+      function bomb () {
+          term.echo("");
+          term.echo("\t\t BOOOOOOOOMMMM!!!!!\n" +
+                    "\t\t YOHOHO pirate, beeing naughty huh?\n" +
+                    "\t\t Carefull with that, I'd rather drink 3 bottles of rum than\n" +
+                    "\t\t Drink that thing!! \n" +
+                    "\t\t Hack the planet! YAAARRRRRR\n");
+      }
+
+      function startx () {
+          term.echo("\n\t\tWhooooooooo take it easy I am still considering a GUI for this. \n" +
+                    "\t\tsh33l1sfun, spend a while exploring, maybe you can find something funny around here\n");
+      }
+      /* Functions End */
+
+        commands = command.split(/[ ]+/);
         switch(commands[0]) {
             case 'whois':
-                var whois = "Name: \t\t\tDaniel Hauck\n" +
-                "Email: \t\t   daniel@hauck.it\n" +
-                "Location: \t\tLeinfelden-Echterdingen\n" +
-                "Profession: \t  System Administrator & Backend Developer\n" +
-                "Homepage: \t\thttps://blog.hauck.io\n";
-                term.echo(whois);
+                whois();
                 break;
-            case 'about': 
-                var about = "I work as a system engineer and backend developer.    I am specialized in building high performance  and  highly availabe infrastructures and I am a lover of  fast and simple systems. My current interests are  automation, IoT, databases(SQL, NoSQL) and workflow  simplification and optimization. If you are interested  in my work, take a look at the 'Latest Projects' or  take a look at my blog";
-                term.echo(about);
+            case 'about':
+                term.echo("\n\t\tIT? Linux? Gaming? yes that's me right there ... Speaking computer since i can remember myself as a person!\\n")
                 break;
             case 'social':
-                
-                    term.echo("Twitter: https://twitter.com/daniel_hauck");
-                
-
-                
-                    term.echo("G+: https://plus.google.com/u/1/+DanielHauckLinux");
-                
-
-                
-                    term.echo("LinkedIn: https://de.linkedin.com/pub/daniel-hauck/74/283/943");
-                
-
-                
-                    term.echo("GitHub: https://github.com/hauckd");
-                
+                social();
                 break;
-                
+            case 'workexp':
+                workexp();
+                break;
+            case 'education':
+                education();
+                break;
             case 'skills':
-                
-                    var stars_length = Math.round(90 / 20);
-                    var stars_filled = Array(stars_length + 1).join("&#9733;")
-                    var stars_blank= Array(6 - stars_length).join("&#9734;")
-                    term.echo("Linux --> " + stars_filled + stars_blank);
-                
-                    var stars_length = Math.round(90 / 20);
-                    var stars_filled = Array(stars_length + 1).join("&#9733;")
-                    var stars_blank= Array(6 - stars_length).join("&#9734;")
-                    term.echo("Automation --> " + stars_filled + stars_blank);
-                
-                    var stars_length = Math.round(80 / 20);
-                    var stars_filled = Array(stars_length + 1).join("&#9733;")
-                    var stars_blank= Array(6 - stars_length).join("&#9734;")
-                    term.echo("Database Administrator --> " + stars_filled + stars_blank);
-                
-                    var stars_length = Math.round(60 / 20);
-                    var stars_filled = Array(stars_length + 1).join("&#9733;")
-                    var stars_blank= Array(6 - stars_length).join("&#9734;")
-                    term.echo("Python --> " + stars_filled + stars_blank);
-                
+                skills();
                 break;
-            
+            case 'softskills':
+                softskills();
+                break;
             case 'languages':
-                
-                    term.echo("German - Native Speaker");
-                
-                    term.echo("English - Business Fluent");
-                
+                languages();
+                break;
+            case 'projects':
+                projects();
                 break;
             case 'tools':
-                
-                    term.echo("&#128295; vim");
-                
-                    term.echo("&#128295; tmux");
-                
-                    term.echo("&#128295; git");
-                
-                    term.echo("&#128295; ansible");
-                
-                    term.echo("&#128295; salt");
-                
-                    term.echo("&#128295; nginx");
-                
-                    term.echo("&#128295; python");
-                
-                    term.echo("&#128295; many more");
-                
+                tools();
                 break;
-
-            case 'projects':
-                
-                    term.echo("didit");
-                    term.echo("Didit is a small service which emails you in defined period and asks you what you have done, or what you haven't done. You just reply to the mail with the tasks you have done, or tasks you haven't done for a reason. Now everbody has replied in a range of time, didit collects the information of the team members and sends an email to everyone that they can see, what the other members have done");
-                    term.echo("-----------------------");
-                
-                    term.echo("PySnipp");
-                    term.echo("PySnipp is a command line application for collecting snippets and notes. For example you could store often used pieces of code there. For adding and editing your snippets the text editor vim is used");
-                    term.echo("-----------------------");
-                
+            case 'thanks':
+                thanks();
                 break;
-
-
+            case 'i-want-this':
+                window.location = 'https://github.com/cfcolaco/terminalCV';
+            break;
             case 'help':
-                term.echo("Available commands are: whois, about, skills, help, social, languages, tools, projects, getyourown")
+                help();
                 break;
-            case 'getyourown':
-                window.location = "https://github.com/hauckd/terminalCV";
+            case 'all':
+                whois();
+                social();
+                workexp();
+                education();
+                skills();
+                softskills();
+                languages();
+                projects();
+                tools();
+                hack();
                 break;
-
-            case 'docker':
-                term.echo("You can't get twitter followers or github stars here ;)");
+            case 'startx':
+                startx();
                 break;
-
-            case 'vim':
-                term.echo("I love it too, but sadly it's not available here :(");
+            case 'hack':
+                hack();
                 break;
-
-            case ':(':
-                term.echo("Smile!");
+            case ':(){:|:&};:':
+                bomb();
                 break;
-                
-
-            default: 
-                term.echo("Unknown command " + command);
+            case 'bye':
+                window.location = 'invaders/index.html';
+                break
+            default:
+                term.echo("\n unknown command: " + command + "\n" +
+                          " please type 'help' for a list of available commands\n");
         }
     }, {
-        prompt: '~ > ',
-        greetings: "Welcome to the command line CV of Daniel Hauck" +
+      prompt: '4s3ti@irl:[[;lightblue;]~]$ ',
+      greetings: "[[b;white;]Welcome to my online resume]" +
         "\n\n" +
-        "If you would like the more 'normal'"+ 
-        "\n" +
-        "version head over to http://hauck-daniel.de" +
-        "\n\n" +
-        "Type 'help' to get a list of commands",
+        
+        "[[b;white;]Type 'help' for  a list of available commands]" +
+        "\n",
         onBlur: function() {
             return false;
         }

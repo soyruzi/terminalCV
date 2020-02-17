@@ -28,33 +28,6 @@
             font-size: 18px;
         }
     </style>
-
-{% if about.piwik_url and about.piwik_site_id -%}
-    <script type="text/javascript">
-        var _paq = _paq || [];
-{% if about.prepend_domain -%}
-        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-{% endif -%}
-{% if about.track_subdomains -%}
-        _paq.push(["setCookieDomain", "*.{{ about.domain }}"]);
-{% endif -%}
-{% if about.hide_click_known_alias -%}
-        _paq.push(["setDomains", ["*.{{ about.domain }}"]]);
-{% endif -%}
-        _paq.push(["trackPageView"]);
-        _paq.push(["enableLinkTracking"]);
-        (function() {
-            var u="{{ about.piwik_url }}/";
-            _paq.push(["setTrackerUrl", u+'piwik.php']);
-            _paq.push(['setSiteId', '{{ about.piwik_site_id }}']);
-            var d=document, g=d.createElement("script"), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
-    </script>
-    {% if about.track_no_java -%}
-        <noscript><p><img src="//analytics.colacoweb.net/piwik.php?idsite=1&rec=1" style="border:0;" alt="" /></p></noscript>
-    {% endif -%}
-    {% endif -%}
   </head>
 <body>
 
@@ -265,7 +238,7 @@ jQuery(document).ready(function($) {
                 thanks();
                 break;
             case 'i-want-this':
-                window.location = 'https://github.com/cfcolaco/terminalCV';
+                window.location = 'https://github.com/4s3ti/terminalCV';
             break;
             case 'help':
                 help();

@@ -44,7 +44,7 @@ nginx is serving the site in port 80 on the docker container.
 
 	$  docker run -tid -p <HostPort>:80 youregistery/terminalCV:tag
 
-test it by accessing to localhost:<HostPort>
+test it by accessing to `localhost:<HostPort>`
 
 #### Example on a docker stack with traefik
 ```

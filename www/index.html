@@ -397,9 +397,7 @@ jQuery(document).ready(function($) {
                 tools();
                 hack();
                 break;
-            case 'startx':
-                startx();
-                break;
+            
             case 'hack':
                 hack();
                 break;
@@ -411,10 +409,10 @@ jQuery(document).ready(function($) {
                 break
             default:
                 term.echo("\n unknown command: " + command + "\n" +
-                          " please type 'help' for a list of available commands\n");
+                          " Digite 'help' para uma lista de comandos disponíveis\n");
         }
     }, {
-      prompt: 'ruzi@desktop:[[;lightblue;]~]$ ',
+      prompt: 'ruzi@desktop:[[;green;]~]$ ',
       greetings: "[[b;white;]Bem vindo ao meu currículo online]" +
         "\n\n" +
         
